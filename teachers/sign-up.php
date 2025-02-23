@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Teachers Sign Up';
+$pageTitle = 'Admin Registration';
 include '_components/loading.php';
 ?>
 

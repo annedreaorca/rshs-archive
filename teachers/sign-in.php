@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Teachers Sign In';
+<?php $pageTitle = 'Admin Login';
     include '_components/loading.php';
 ?>
 

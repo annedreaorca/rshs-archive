@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Student Sign Up';
+<?php $pageTitle = 'Student Registration';
     include '_components/loading.php';
 ?>
 
