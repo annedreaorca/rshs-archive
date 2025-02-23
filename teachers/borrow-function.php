@@ -1,19 +1,31 @@
 <?php
 include '../db-conn.php'; // Adjust this to your database connection file
 
-// Check if item_name is passed as a query parameter
-if (isset($_GET['item_name'])) {
-    $item_name = urldecode($_GET['item_name']);
+// Check if the request ID and action are provided in the URL
+if (isset($_GET['id']) && isset($_GET['action'])) {
+    $b_item_id = $_GET['id'];
+    $action = $_GET['action'];
 
-    // Update the status of the item to 'Borrowed'
-    $sql = "UPDATE lab_equipments SET item_status = 'Borrowed' WHERE item_name = ?";
+    // Validate the action
+    if ($action === 'approve') {
+        // Update the status to 'Approved'
+        $sql = "UPDATE borrowed_items SET status = 'Approved' WHERE b_item_id = ?";
+    } elseif ($action === 'deny') {
+        // Update the status to 'Denied'
+        $sql = "UPDATE borrowed_items SET status = 'Denied' WHERE b_item_id = ?";
+    } else {
+        echo "Invalid action specified.";
+        exit();
+    }
+
+    // Prepare and execute the query
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$item_name]);
+    $stmt->execute([$b_item_id]);
 
-    // Redirect back to the inventory page
-    header('Location: inventory.php');
+    // Redirect back to the requests page
+    header('Location: requests.php');
     exit();
 } else {
-    echo "No item selected for borrowing.";
+    echo "Invalid request.";
 }
 ?>

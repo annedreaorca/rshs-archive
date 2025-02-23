@@ -45,7 +45,7 @@
 
         // Insert into borrowed_items table
         try {
-            $sql = "INSERT INTO borrowed_items (lrn_or_email, item_id) VALUES (:lrn_or_email, :item_id)";
+            $sql = "INSERT INTO borrowed_items (lrn_or_email, item_id) VALUES (:lrn_or_email, :item_id, 'Pending')";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':lrn_or_email', $lrn_or_email, PDO::PARAM_STR);
             $stmt->bindParam(':item_id', $itemid, PDO::PARAM_INT);
