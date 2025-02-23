@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pageTitle = 'Users';
 include 'teachers-layout-header.php';
 include '_components/loading.php';
@@ -31,27 +31,33 @@ $totalUsers = count($users); // Get total count
         </div>
 
         <!-- User Table -->
-        <div class="mt-6 bg-white shadow-md rounded-lg p-4">
-            <table class="w-full border-collapse border border-gray-300">
+        <div class="mt-6 bg-white shadow-md rounded-lg p-6 table-container">
+            <table class="w-full">
                 <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-4 py-2">User ID</th>
-                        <th class="border border-gray-300 px-4 py-2">Name</th>
-                        <th class="border border-gray-300 px-4 py-2">Email</th>
-                        <th class="border border-gray-300 px-4 py-2">Access Level</th>
-                        <th class="border border-gray-300 px-4 py-2">Actions</th>
+                    <tr>
+                        <th class="table-head">User ID</th>
+                        <th class="table-head">Name</th>
+                        <th class="table-head">Email</th>
+                        <th class="table-head">Access Level</th>
+                        <th class="table-head">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($users as $user) : ?>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><?= $user['user_id']; ?></td>
-                            <td class="border border-gray-300 px-4 py-2"><?= htmlspecialchars($user['user_name']); ?></td>
-                            <td class="border border-gray-300 px-4 py-2"><?= htmlspecialchars($user['lrn_or_email']); ?></td>
-                            <td class="border border-gray-300 px-4 py-2">
+                            <td class="table-data">
+                                <?= $user['user_id']; ?>
+                            </td>
+                            <td class="table-data">
+                                <?= htmlspecialchars($user['user_name']); ?>
+                            </td>
+                            <td class="table-data">
+                                <?= htmlspecialchars($user['lrn_or_email']); ?>
+                            </td>
+                            <td class="table-data">
                                 <?= ($user['access_level'] == 1) ? 'Admin' : 'Student'; ?>
                             </td>
-                            <td class="border border-gray-300 px-4 py-2">
+                            <td class="table-data">
                                 <form action="update-access.php" method="post" class="inline-block">
                                     <input type="hidden" name="user_id" value="<?= $user['user_id']; ?>">
                                     <select name="access_level" class="border px-2 py-1 rounded">
