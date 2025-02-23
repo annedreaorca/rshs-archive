@@ -64,4 +64,4 @@
                 </div>
             </section>
         </main>
-<?php include 'teachers-layout-footer.php'; ?>
+<?php include 'students-layout-footer.php'; ?>

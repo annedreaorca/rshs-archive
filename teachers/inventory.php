@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- Inventory Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
         <?php foreach ($reports as $lab_equipment): ?>
         <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
             <!-- Display Image -->
@@ -61,7 +61,7 @@
                 <span class="<?php
                     echo ($lab_equipment['total_available'] > 0) ? 'text-green-600' : 'text-red-600';
                 ?>">
-                    <?= ($lab_equipment['total_available'] > 0) ? 'Available' : 'No Stock'; ?>
+                    <?= ($lab_equipment['total_available'] > 0) ? 'Available' : 'No Available'; ?>
                 </span>
             </p>
 
