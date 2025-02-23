@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2025 at 06:36 PM
+-- Generation Time: Feb 23, 2025 at 08:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,15 +43,19 @@ CREATE TABLE `borrowed_items` (
   `lrn_or_email` varchar(255) NOT NULL,
   `item_id` int(11) NOT NULL,
   `date_borrowed` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `approval_date` datetime DEFAULT NULL,
+  `denied_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `borrowed_items`
 --
 
-INSERT INTO `borrowed_items` (`b_item_id`, `lrn_or_email`, `item_id`, `date_borrowed`, `status`) VALUES
-(1, '202110045@gordoncollege.edu.ph', 1, '2025-02-23 17:21:31', '');
+INSERT INTO `borrowed_items` (`b_item_id`, `lrn_or_email`, `item_id`, `date_borrowed`, `status`, `approval_date`, `denied_date`) VALUES
+(3, '202110045@gordoncollege.edu.ph', 1, '2025-02-23 18:42:49', 'Denied', NULL, NULL),
+(4, '202110045@gordoncollege.edu.ph', 2, '2025-02-23 18:46:41', 'Approved', '2025-02-24 02:47:13', NULL),
+(5, '202110045@gordoncollege.edu.ph', 1, '2025-02-23 18:51:36', 'Denied', NULL, '2025-02-24 02:51:59');
 
 -- --------------------------------------------------------
 
@@ -76,8 +80,8 @@ CREATE TABLE `lab_equipments` (
 --
 
 INSERT INTO `lab_equipments` (`item_id`, `item_name`, `item_description`, `uploader`, `file_name`, `temp_name`, `item_status`, `total_available`, `is_archived`) VALUES
-(1, 'AC/DC Adapter', 'A device that converts alternating curent from a wall outlet into direct current.', 'Administrator', 'AC_DC Adapter.jpg', 'AC_DC Adapter.jpg', 'Available', 13, 0),
-(2, 'Acceleration Recording Timer', 'Demonstrates increase in velocity and precisely calculate acceleration, drag and friction by measuring the interval between a series of dots. ', 'Admin', 'Acceleration Recording Timer.jpg', 'Acceleration Recording Timer.jpg', 'Available', 12, 0),
+(1, 'AC/DC Adapter', 'A device that converts alternating curent from a wall outlet into direct current.', 'Admin', 'AC_DC Adapter.jpg', 'AC_DC Adapter.jpg', 'Available', 9, 0),
+(2, 'Acceleration Recording Timer', 'Demonstrates increase in velocity and precisely calculate acceleration, drag and friction by measuring the interval between a series of dots. ', 'Admin', 'Acceleration Recording Timer.jpg', 'Acceleration Recording Timer.jpg', 'Available', 10, 0),
 (3, 'Acetate Film Projector', 'A device that projects an enlarged image onto a screen.', 'Admin', '', '', 'Available', 2, 0),
 (4, 'Acid Burette ', 'A long glass tube with markings on it for accurate measurement and dispense liquid.', 'Admin', 'Acid Burette.avif', 'Acid Burette.avif', 'Available', 8, 0),
 (5, 'Acrylic Contianer', 'Clear and durable storage boxes that are used for storage and displays.', 'Admin', 'Acrilyc Container.webp', 'Acrilyc Container.webp', 'Available', 1, 0),
@@ -201,7 +205,7 @@ ALTER TABLE `allowed_admins`
 -- AUTO_INCREMENT for table `borrowed_items`
 --
 ALTER TABLE `borrowed_items`
-  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `lab_equipments`

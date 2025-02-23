@@ -10,7 +10,8 @@ $sql = "SELECT
             le.item_name, 
             u.user_name AS student_name, 
             bi.date_borrowed, 
-            bi.status 
+            bi.status,
+            bi.approval_date
         FROM borrowed_items bi
         INNER JOIN users u ON bi.lrn_or_email = u.lrn_or_email
         INNER JOIN lab_equipments le ON bi.item_id = le.item_id";
@@ -51,10 +52,14 @@ $borrowed_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td class="py-2 px-4"><?= date('F j, Y, g:i a', strtotime($request['date_borrowed'])); ?></td>
                     <td class="py-2 px-4"><?= htmlspecialchars($request['status']); ?></td>
                     <td class="py-2 px-4">
-                        <a href="borrow-function.php?id=<?= $request['b_item_id']; ?>&action=approve"
-                            class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition-colors">Approve</a>
-                        <a href="borrow-function.php?id=<?= $request['b_item_id']; ?>&action=deny"
-                            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-colors">Deny</a>
+                        <?php if ($request['status'] === 'Pending'): ?>
+                            <a href="borrow-function.php?id=<?= $request['b_item_id']; ?>&action=approve"
+                                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition-colors">Approve</a>
+                            <a href="borrow-function.php?id=<?= $request['b_item_id']; ?>&action=deny"
+                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-colors">Deny</a>
+                        <?php else: ?>
+                            <span class="text-gray-400">Action Taken</span>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

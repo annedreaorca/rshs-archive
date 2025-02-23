@@ -21,9 +21,6 @@
             exit();
         }
 
-        // Reduce the available count
-        $total_available -= 1;
-
         // Check if student exists
         $sql = "SELECT * FROM users WHERE lrn_or_email = :lrn_or_email";
         $stmt = $conn->prepare($sql);
