@@ -36,7 +36,7 @@ function setActiveClass($pageName) {
                     <div class="flex flex-col gap-[30px]">
                         <img src="../assets/images/placeholder-logo.png" alt="Labzada Logo" class="w-[75px] h-[75px]">
                         <div class="flex flex-col gap-3">
-                            <h1 class="text-3xl font-600 text-dark text-left mt-5">Teacher's Sign Up</h1>
+                            <h1 class="text-3xl font-600 text-dark text-left mt-5">Admin Registration</h1>
                             <p class="text-zinc-600 mt-2">Please fill in the details below.</p>
                         </div>
                         <form class="flex flex-col gap-12" action="sign-up-function.php" method="post" autocomplete="off">

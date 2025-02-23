@@ -35,7 +35,7 @@ if (isset($_SESSION['user_user_id']) && isset($_SESSION['user_name'])) {
                     <div class="flex flex-col gap-[30px]">
                         <img src="../assets/images/placeholder-logo.png" alt="Labzada Logo" class="w-[75px] h-[75px]">
                         <div class="flex flex-col gap-3">
-                            <h1 class="text-3xl font-600 text-dark text-left mt-5">Student Sign Up</h1>
+                            <h1 class="text-3xl font-600 text-dark text-left mt-5">Student Registration</h1>
                             <p class="text-zinc-600 mt-2">Create your account below.</p>
                         </div>
                         <form class="flex flex-col gap-6" action="sign-up-function.php" method="post" autocomplete="off">

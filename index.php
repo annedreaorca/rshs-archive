@@ -15,7 +15,7 @@
                         <p class="text-[16px] font-300 helvetica text-zinc-600 text-left !mt-5">Archive is a streamlined inventory system designed for science laboratories. Whether you're a student looking to borrow equipment or a teacher managing lab resources, Archive ensures an efficient and organized experience.</p>
                     </div>
                     <div class="flex flex-row gap-5 !mt-3">
-                        <a href="teachers/sign-in" class="button-outline">I&apos;m a Teacher</a>
+                        <a href="teachers/sign-in" class="button-outline">I&apos;m an Admin</a>
                         <a href="students/sign-in" class="button-primary">I&apos;m a Student</a>
                     </div>
                 </div>

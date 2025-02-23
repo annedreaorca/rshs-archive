@@ -21,8 +21,17 @@ if (isset($_POST['email'], $_POST['name'], $_POST['gender'], $_POST['password'],
         exit();
     }
 
-    // Check if email already exists
-    $stmt = $conn->prepare("SELECT * FROM users WHERE lrn_or_email=?");
+    // Check if email is in the allowed_admins table
+    $stmt = $conn->prepare("SELECT * FROM allowed_admins WHERE email = ?");
+    $stmt->execute([$email]);
+
+    if ($stmt->rowCount() === 0) {
+        header('location: sign-up.php?error=This email is not authorized for admin registration!');
+        exit();
+    }
+
+    // Check if email is already registered
+    $stmt = $conn->prepare("SELECT * FROM users WHERE lrn_or_email = ?");
     $stmt->execute([$email]);
 
     if ($stmt->rowCount() > 0) {
@@ -33,7 +42,7 @@ if (isset($_POST['email'], $_POST['name'], $_POST['gender'], $_POST['password'],
     // Hash the password before storing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert teacher data into the database
+    // Insert admin data into the users table
     $stmt = $conn->prepare("INSERT INTO users (lrn_or_email, user_name, user_gender, user_password, is_archived, access_level) 
                             VALUES (?, ?, ?, ?, 0, 1)");
 
