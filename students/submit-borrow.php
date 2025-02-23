@@ -6,13 +6,23 @@
         $itemid = $_POST['item_id'];
         $item_name = $_POST['item_name'];
         $lrn_or_email = $_POST['lrn_or_email'];
-        $total_available = $_POST['total_available'] - 1;
 
-        // Check if item is available
+        // Debugging: Check the received value
+        if (!isset($_POST['total_available'])) {
+            header("Location: borrow-form.php?id=$itemid&error=Total available not provided!");
+            exit();
+        }
+
+        $total_available = intval($_POST['total_available']); // Convert to integer
+        
+        // Ensure there is at least 1 item available before borrowing
         if ($total_available <= 0) {
             header("Location: borrow-form.php?id=$itemid&error=Not enough items available!");
             exit();
         }
+
+        // Reduce the available count
+        $total_available -= 1;
 
         // Check if student exists
         $sql = "SELECT * FROM users WHERE lrn_or_email = :lrn_or_email";
@@ -33,7 +43,7 @@
         $stmt->bindParam(':itemid', $itemid, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Insert into borrowed_items table (Removed `status` column)
+        // Insert into borrowed_items table
         try {
             $sql = "INSERT INTO borrowed_items (lrn_or_email, item_id) VALUES (:lrn_or_email, :item_id)";
             $stmt = $conn->prepare($sql);
