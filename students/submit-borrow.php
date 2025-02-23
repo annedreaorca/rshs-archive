@@ -43,14 +43,23 @@
         $stmt->bindParam(':itemid', $itemid, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Insert into borrowed_items table
         try {
-            $sql = "INSERT INTO borrowed_items (lrn_or_email, item_id) VALUES (:lrn_or_email, :item_id, 'Pending')";
+            $sql = "INSERT INTO borrowed_items (lrn_or_email, item_id, date_borrowed, status) 
+                    VALUES (:lrn_or_email, :item_id, :date_borrowed, :status)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':lrn_or_email', $lrn_or_email, PDO::PARAM_STR);
             $stmt->bindParam(':item_id', $itemid, PDO::PARAM_INT);
+            
+            // Get current date and time
+            date_default_timezone_set('Asia/Manila');
+            $date_borrowed = date("Y-m-d H:i:s"); 
+            $status = "Pending"; // Set status as pending
+        
+            $stmt->bindParam(':date_borrowed', $date_borrowed, PDO::PARAM_STR);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        
             $stmt->execute();
-
+        
             header("Location: borrow-form.php?id=$itemid&success=Successfully borrowed the item!");
         } catch (PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
@@ -58,7 +67,7 @@
             } else {
                 header("Location: borrow-form.php?id=$itemid&error=Database error: " . $e->getMessage());
             }
-        }
+        }        
     }
 
     $conn = null;
