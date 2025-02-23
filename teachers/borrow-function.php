@@ -44,7 +44,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         $stmt->bindParam(':b_item_id', $b_item_id, PDO::PARAM_INT);
         $stmt->execute();
         
-        header("Location: admin-panel.php?success=Request approved!");
+        header("Location: requests.php?success=Request approved!");
         exit();
 
     } elseif ($action === "deny") {
@@ -54,7 +54,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         $stmt->bindParam(':b_item_id', $b_item_id, PDO::PARAM_INT);
         $stmt->execute();
         
-        header("Location: admin-panel.php?success=Request denied!");
+        header("Location: requests.php?success=Request denied!");
         exit();
     }
 }

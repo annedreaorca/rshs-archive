@@ -1,6 +1,6 @@
 <?php
     $pageTitle = 'Borrow Equipment';
-    include '../db-conn.php'; // Ensure the correct file name
+    include '../db-conn.php';
     include 'students-layout-header.php';
 
     // Validate ID
@@ -24,6 +24,21 @@
         die("<p class='text-red-500'>Error: " . $e->getMessage() . "</p>");
     }
 
+    if (!isset($_SESSION['user_user_id'])) {
+        die("<p class='text-red-500'>Error: User not logged in.</p>");
+    }
+    
+    $user_id = $_SESSION['user_user_id'];
+    $sql_user = "SELECT user_name, lrn_or_email FROM users WHERE user_id = :user_id";
+    $stmt_user = $conn->prepare($sql_user);
+    $stmt_user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt_user->execute();
+    $user = $stmt_user->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        die("<p class='text-red-500'>Error: User data not found.</p>");
+    }
+
     date_default_timezone_set('Asia/Manila');
     $cdate = date("F j, Y h:i:sa");
 ?>
@@ -41,15 +56,14 @@
             <p class="text-gray-600">Manage your lab inventory with ease.</p>
         </div>
 
-        <form class="p-6 bg-white rounded-lg shadow-md space-y-4  mt-10" action="submit-borrow.php" method="post" autocomplete="off">
+        <form class="p-6 bg-white rounded-lg shadow-md space-y-4 mt-10" action="submit-borrow.php" method="post" autocomplete="off">
             <label for="item_name" class="block text-gray-700 font-medium">Item Name</label>
             <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="item_name" id="item_name" value="<?= htmlspecialchars($row['item_name']) ?>" readonly required>
 
-            <label for="file_name" class="block text-gray-700 font-medium">File Name</label>
-            <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="file_name" id="file_name" value="<?= htmlspecialchars($row['file_name']) ?>" readonly required>
+            <label for="quantity" class="block text-gray-700 font-medium">Quantity</label>
+            <input type="number" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="quantity" id="quantity" min="1" max="<?= htmlspecialchars($row['total_available']) ?>" required>
 
-            <label for="lrn_or_email" class="block text-gray-700 font-medium">Student ID / Email</label>
-            <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="lrn_or_email" id="lrn_or_email" required>
+            <input type="hidden" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="lrn_or_email" id="lrn_or_email" value="<?= htmlspecialchars($user['lrn_or_email']) ?>" readonly required>
 
             <label for="cdate" class="block text-gray-700 font-medium">Date</label>
             <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="cdate" id="cdate" value="<?= $cdate ?>" readonly required>
@@ -57,7 +71,7 @@
             <input type="hidden" name="item_id" value="<?= htmlspecialchars($row['item_id']) ?>">
             <input type="hidden" name="status" value="Pending">
             <input type="hidden" name="total_available" value="<?= htmlspecialchars($row['total_available']) ?>">
-            <input type="hidden" name="uploader" value="<?= htmlspecialchars($row['uploader']) ?>">
+            <input type="hidden" name="uploader" value="<?= htmlspecialchars($user['user_name']) ?>">
 
             <?php if (isset($_GET['success'])) { ?>
                 <div class="p-3 bg-green-100 text-green-700 border border-green-400 rounded-lg">

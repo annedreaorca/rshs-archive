@@ -57,7 +57,7 @@
         
             $stmt->execute();
         
-            header("Location: borrow-form.php?id=$itemid&success=Successfully borrowed the item!");
+            header("Location: borrow-form.php?id=$itemid&success=Successfully sent a request!");
         } catch (PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
                 header("Location: borrow-form.php?id=$itemid&error=Student ID already exists in borrowed records!");

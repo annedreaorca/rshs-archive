@@ -23,7 +23,7 @@ $borrowed_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <section class="flex">
     <?php include '_components/sidebar.php'; ?>
-    <main class="flex-1 min-h-screen p-6">
+    <main class="flex-1 min-h-screen p-8 ml-[272px] max-[1023px]:ml-[0px] overflow-scroll-y">
         <button onclick="toggleSidebar()" class="md:hidden text-primary rounded">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

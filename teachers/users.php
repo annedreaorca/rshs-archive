@@ -25,14 +25,15 @@ $totalUsers = count($users); // Get total count
                 <p class="text-gray-600">View, update, and manage user roles.</p>
             </div>
             <!-- Total Users Display -->
-            <div class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow">
-                <p class="font-bold">Total Users: <?= $totalUsers; ?></p>
+            <div class="total_users">
+                <p>Total Users:</p>
+                <span><?= $totalUsers; ?></span>
             </div>
         </div>
 
         <!-- User Table -->
-        <div class="mt-6 bg-white shadow-md rounded-lg p-6 table-container">
-            <table class="w-full">
+        <div class="mt-6 bg-white shadow-md rounded-lg p-6 table-container !overflow-x-auto">
+            <table class="w-full !min-w-[600px]">
                 <thead>
                     <tr>
                         <th class="table-head">User ID</th>

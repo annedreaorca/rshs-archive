@@ -16,7 +16,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
     // If approved, update item status to "Borrowed"
     if ($status === 'Approved') {
-        $sqlItem = "UPDATE lab_equipments SET item_status = 'Borrowed' WHERE item_name = 
+        $sqlItem = "UPDATE lab_equipments SET item_status = 'Borrowed' WHERE item_name =
                     (SELECT item_name FROM borrow_requests WHERE id = ?)";
         $stmtItem = $conn->prepare($sqlItem);
         $stmtItem->execute([$id]);
