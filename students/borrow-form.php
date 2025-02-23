@@ -48,7 +48,7 @@
             <label for="file_name" class="block text-gray-700 font-medium">File Name</label>
             <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="file_name" id="file_name" value="<?= htmlspecialchars($row['file_name']) ?>" readonly required>
 
-            <label for="lrn_or_email" class="block text-gray-700 font-medium">Email Address</label>
+            <label for="lrn_or_email" class="block text-gray-700 font-medium">Student ID / Email</label>
             <input type="text" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="lrn_or_email" id="lrn_or_email" required>
 
             <label for="cdate" class="block text-gray-700 font-medium">Date</label>

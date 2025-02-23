@@ -403,6 +403,29 @@ span.accents {
     color:#222222;
 }
 
+table th, td {
+    font-family: 'NeurialGrotesk';
+}
+
+.table-head {
+    text-align: left;
+    color: #4d4d4d;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.table-container thead .table-head {
+    padding-bottom: 10px;
+}
+
+td.table-data {
+    text-align: left;
+    font-size: 16px;
+    color: #222222;
+    font-weight: 900;
+}
+
+
 @media screen and (max-width: 639px) {
     .overview-cards .card {
         flex-direction: row;
