@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2025 at 04:15 PM
+-- Generation Time: Feb 23, 2025 at 04:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,14 +43,21 @@ CREATE TABLE `borrowed_items` (
 CREATE TABLE `lab_equipments` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(255) NOT NULL,
+  `item_description` varchar(255) NOT NULL,
   `uploader` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
   `file_name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `temp_name` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `item_status` varchar(255) NOT NULL,
   `total_available` int(11) NOT NULL,
   `is_archived` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lab_equipments`
+--
+
+INSERT INTO `lab_equipments` (`item_id`, `item_name`, `item_description`, `uploader`, `file_name`, `temp_name`, `item_status`, `total_available`, `is_archived`) VALUES
+(1, 'AC/DC Adapter', 'A device that converts alternating curent from a wall outlet into direct current.', 'Administrator', 'Untitled design.jpg', '20250223160603_Untitled design.jpg', 'Available', 14, 0);
 
 -- --------------------------------------------------------
 
@@ -68,14 +75,6 @@ CREATE TABLE `users` (
   `is_archived` int(11) NOT NULL,
   `access_level` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `lrn_or_email`, `user_name`, `user_gender`, `grade_level`, `user_password`, `is_archived`, `access_level`) VALUES
-(91, 'annedreaorca@gmail.com', 'Andrea Anne Orca', 'Female', 'Grade 12', '$2y$10$/pHdm8hVaF/6/D7sSwvI6OeRNpESehH/P7TJo86mq4qCxcjtk3i7S', 0, 2),
-(92, 'cjapaycuya16@gmail.com', 'Christian Jay Cuya', 'Male', '', '$2y$10$4D4I/WETS.JCAugvh/OyeOe5MqdNRP8qS4mwfWNg4qSHft91FaZoS', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -108,19 +107,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrowed_items`
 --
 ALTER TABLE `borrowed_items`
-  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lab_equipments`
 --
 ALTER TABLE `lab_equipments`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
