@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2025 at 03:50 AM
+-- Generation Time: Feb 23, 2025 at 04:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,13 +34,6 @@ CREATE TABLE `borrowed_items` (
   `date_borrowed` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `borrowed_items`
---
-
-INSERT INTO `borrowed_items` (`b_item_id`, `lrn_or_email`, `item_id`, `date_borrowed`) VALUES
-(1, '202110064', 3, '2025-02-23 02:18:42');
-
 -- --------------------------------------------------------
 
 --
@@ -59,16 +52,6 @@ CREATE TABLE `lab_equipments` (
   `is_archived` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `lab_equipments`
---
-
-INSERT INTO `lab_equipments` (`item_id`, `item_name`, `uploader`, `date`, `file_name`, `temp_name`, `item_status`, `total_available`, `is_archived`) VALUES
-(2, 'asdfa', 'sdfasdf', '2025-02-11', 'Archive-Favicon.png', '20250223011527_Archive-Favicon.png', 'Available', 10, 0),
-(3, 'asdfasdf', 'asdfasdf', '2025-02-05', 'Archive-Logo.png', '20250223011633_Archive-Logo.png', 'Available', 2, 0),
-(4, 'asdfasdf', 'asdfasdf', '2025-02-13', 'Archive-Logo_2.png', '20250223012440_Archive-Logo.png', 'Available', 10, 0),
-(5, 'Item 2', 'qrwety', '2025-02-23', 'Archive-Favicon_2.png', '20250223023726_Archive-Favicon.png', 'Available', 20, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -80,22 +63,19 @@ CREATE TABLE `users` (
   `lrn_or_email` varchar(255) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_gender` varchar(255) NOT NULL,
-  `degree` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL,
+  `grade_level` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
   `is_archived` int(11) NOT NULL,
-  `access_level` int(11) NOT NULL DEFAULT 2,
-  `recovery_id` int(11) NOT NULL
+  `access_level` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `lrn_or_email`, `user_name`, `user_gender`, `degree`, `course`, `user_password`, `is_archived`, `access_level`, `recovery_id`) VALUES
-(1, '100000001', 'Administrator', 'Female', '', '', 'admin', 2, 1, 111),
-(2, '202110064', 'Christian Cuya', 'Male', 'Senior High', 'BSCS', 'cjay', 0, 2, 123),
-(3, '202110045', 'Mahasiah Bautista', 'Male', 'Senior High', 'BSCS', 'siah', 0, 2, 0);
+INSERT INTO `users` (`user_id`, `lrn_or_email`, `user_name`, `user_gender`, `grade_level`, `user_password`, `is_archived`, `access_level`) VALUES
+(91, 'annedreaorca@gmail.com', 'Andrea Anne Orca', 'Female', 'Grade 12', '$2y$10$/pHdm8hVaF/6/D7sSwvI6OeRNpESehH/P7TJo86mq4qCxcjtk3i7S', 0, 2),
+(92, 'cjapaycuya16@gmail.com', 'Christian Jay Cuya', 'Male', '', '$2y$10$4D4I/WETS.JCAugvh/OyeOe5MqdNRP8qS4mwfWNg4qSHft91FaZoS', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -128,7 +108,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrowed_items`
 --
 ALTER TABLE `borrowed_items`
-  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `b_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lab_equipments`
@@ -140,7 +120,7 @@ ALTER TABLE `lab_equipments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
