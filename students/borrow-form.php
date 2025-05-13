@@ -63,6 +63,7 @@
             <label for="quantity" class="block text-gray-700 font-medium">Quantity</label>
             <input type="number" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="quantity" id="quantity" min="1" max="<?= htmlspecialchars($row['total_available']) ?>" required>
 
+
             <input type="hidden" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" name="lrn_or_email" id="lrn_or_email" value="<?= htmlspecialchars($user['lrn_or_email']) ?>" readonly required>
 
             <label for="cdate" class="block text-gray-700 font-medium">Date</label>

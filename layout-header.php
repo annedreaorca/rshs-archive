@@ -1,9 +1,20 @@
 <?php
 	session_start();
-	if (isset($_SESSION['user_user_id']) && isset($_SESSION['user_name']))
-	{ 
-		header('location: dashboard.php');
+	if (isset($_SESSION['user_user_id']) && isset($_SESSION['user_name'])) { 
+		if (isset($_SESSION['access_level'])) {
+			if ($_SESSION['access_level'] == 1) {
+				header('Location: admin/dashboard.php');
+			} elseif ($_SESSION['access_level'] == 2) {
+				header('Location: student/dashboard.php');
+			} else {
+				header('Location: index.php');
+			}
+		} else {
+			header('Location: index.php');
+		}
+		exit();
 	}
+	
 	// Function to set active class on navigation for page title
 	function setActiveClass($pageName) {
 		$currentPage = basename($_SERVER['PHP_SELF']);
@@ -16,7 +27,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" type="image/jpg" href="image/gc-cores-favicon.png"/>
+		<link rel="shortcut icon" type="image/jpg" href="../assets/images/Archive-Favicon.png"/>
 		<link rel="stylesheet" href="globals.css">
 		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 		<title><?= isset($pageTitle) ? $pageTitle : 'Default Title' ?></title>

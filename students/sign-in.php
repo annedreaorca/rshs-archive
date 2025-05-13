@@ -12,7 +12,7 @@
 
     // Check if the user is already logged in
     if (isset($_SESSION['user_user_id']) && isset($_SESSION['user_name'])) {
-        header('Location: /rshs-archive/students/dashboard');
+        header('Location: /students/dashboard');
         exit();
     }
 	// Function to set active class on navigation for page title
@@ -27,8 +27,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" type="image/jpg" href="/rshs-archive/assets/images/Archive-Favicon.png"/>
-		<link rel="stylesheet" href="/rshs-archive/globals.css">
+		<link rel="shortcut icon" type="image/jpg" href="../assets/images/Archive-Favicon.png"/>
+		<link rel="stylesheet" href="../globals.css">
 		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 		<title><?= isset($pageTitle) ? $pageTitle : 'Default Title' ?></title>
 	</head>

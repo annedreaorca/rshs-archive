@@ -20,9 +20,9 @@
     --width: min(100% - 100px, 1140px);
     --wide-width: min(100% - 100px, 1340px);
 
-    --tablet-width: min(100% - 100px, 1140px);
+    --tablet-width: min(100% - 50px, 1140px);
 
-    --mobile-width: min(100% - 100px, 1140px);
+    --mobile-width: min(100% - 50px, 1140px);
 }
 
 /* Set Custom Styles with Tailwind CSS */
@@ -147,6 +147,12 @@ button, a {
     margin-inline: auto;
 }
 
+@media screen and (max-width: 1024px) {
+    .wide-container {
+        width: min(100% - 40px, 1340px) !important;
+    }
+}
+
 @media screen and (max-width: 840px) {
     .bg-front {
         background-position: center right;
@@ -179,7 +185,7 @@ span.accents {
     font-weight: 700;
 }
 
-.button-primary, .button-outline, .button-secondary {
+.button-primary, .button-outline, .button-outline-white, .button-secondary {
     padding: 12px 25px;
     border-radius: 7px;
     cursor: pointer;
@@ -210,6 +216,18 @@ span.accents {
     background-color: var(--dark-color);
     color: var(--light-color);
     border-color: var(--dark-color);
+}
+
+.button-outline-white {
+    background-color: transparent;
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+.button-outline-white:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border-color: var(--light-color);
 }
 
 .button-secondary {
@@ -355,19 +373,277 @@ span.accents {
     line-height: 16px;
 }
 
+/* Start Informative Website Style */
+h2.section-title {
+    font-family: 'NeurialGrotesk', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #222222;
+}
+.header-logo img {
+    width: 55px;
+}
+.header-nav .nav-link a {
+    font-family: 'NeurialGrotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222222;
+}
+
+.header-nav .nav-link a:hover {
+    color: #1d2a62;
+}
+
+.mobile-nav-links .nav-link a {
+    font-size: 20px !important;
+    font-weight: 500;
+    color: #222222;
+}
+
+.hero-content img {
+    filter: brightness(0) invert(1);
+    width: 230px;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px -10px rgba(51, 51, 51, 0.1);
+}
+
+.feature-card .feature-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    background-color: #1d2a622d;
+    border: 1px solid #1d2a62;
+}
+
+h3.title {
+    font-family: 'NeurialGrotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222222;
+}
+
+
+.footer-wrapper {
+    background-color:hsla(0,0%,100%,1);
+    background-image:
+    radial-gradient(at 68% 69%, hsla(227,58%,25%,0.08) 0px, transparent 50%),
+    radial-gradient(at 96% 96%, hsla(227,58%,25%,0.24) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(227,58%,25%,0) 0px, transparent 50%),
+    radial-gradient(at 35% 38%, hsla(0,0%,100%,1) 0px, transparent 50%),
+    radial-gradient(at 96% 5%, hsla(227,58%,25%,0.05) 0px, transparent 50%),
+    radial-gradient(at 20% 6%, hsla(227,58%,25%,0.13) 0px, transparent 50%);
+}
+
+@media screen and (max-width: 1024px) {
+    .header-logo img {
+        width: 45px;
+    }
+
+    .hero-content img {
+        width: 180px;
+    }
+    #sidebar-mobile {
+        box-shadow: -10px 0px 20px -10px rgba(51, 51, 51, 0.1);
+    }
+
+    h2.section-title {
+        font-family: 'NeurialGrotesk', sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #222222;
+    }
+}
+
+.content-desc {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #b6b6b6;
+}
+
+.hero-wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(23, 43, 87, 0.5)), 
+                url('assets/images/RSHS Archive hero image.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    gap: 20px;
+    justify-content: center;
+}
+
+.slide-item, .mobile-how-to-use .item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    transition: border 0.3s ease;
+    border: 1px solid #eeeeee;
+    height: 100%;
+}
+
+.slide-item:hover {
+    border: 1px solid #1d2a62;
+}
+
+.tag {
+    background-color: #1d2a622d;
+    border: 1px solid #1d2a62;
+    border-radius: 100px;
+    padding: 5px 20px;
+    font-family: 'NeurialGrotesk', sans-serif;
+    margin-bottom: 5px;
+    align-self: flex-start;
+}
+
+.prev-btn, .next-btn {
+    /* position: absolute;
+    top: 50%;
+    transform: translateY(-50%); */
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    z-index: 10; /* Ensure it's above slides */
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:where(.prev-btn, .next-btn ) svg {
+    color: #131b41;
+}
+
+:where(.prev-btn:hover, .next-btn:hover ) svg {
+    color: #ffffff;
+}
+
+
+.prev-btn:hover, .next-btn:hover {
+    background: #131b41;
+}
+
+/* .prev-btn { left: 10px; }
+.next-btn { right: 10px; } */
+
+.dots-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: gray;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: black;
+}
+
+.team-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.team-card .email {
+    font-size: 14px;
+}
+.role {
+    font-family: 'NeurialGrotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+.mobile-how-to-use {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .slide {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .slide-item {
+        max-width: 100%;
+    }
+
+    .prev-btn, .next-btn {
+        font-size: 18px;
+    }
+    .mobile-how-to-use {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* End Informative Website Style */
+
 /* Dashboard */
 .overview-cards .card {
     display: flex;
-    flex-direction: column;
     gap: 14px;
 }
 
 .overview-cards .card {
-    padding: 0 40px;
+    padding: 20px 30px;
 }
 
-.overview-cards .card:not(:last-child) {
+
+.overview-cards .card:nth-child(odd) {
     border-right: 1px solid #e0e0e0;
+}
+
+.overview-cards .card:nth-child(4n), .overview-cards .card:nth-child(4n-1) {
+    border-top: 1px solid #e0e0e0;
 }
 
 .overview-cards .card-icon {
@@ -380,6 +656,7 @@ span.accents {
     background-color: #1d2a622d;
     border: 1px solid #1d2a62;
 }
+
 :where(.card .card-content) h2, span {
     justify-self: start;
 }
@@ -461,6 +738,11 @@ td.table-data {
         border-right: 0px solid #e0e0e0;
         border-bottom: 1px solid #e0e0e0;
     }
+
+    .overview-cards .card:nth-child(4n), .overview-cards .card:nth-child(4n-1) {
+        border-top: 0px solid #e0e0e0;
+    }
+
     .overview-cards .card {
         padding: 20px 10px 20px 10px;
     }

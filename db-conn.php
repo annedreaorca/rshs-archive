@@ -1,9 +1,9 @@
 <?php
 
 $sName = "localhost";
-$uName = "root";
-$pass = "";
-$db_name = "rshs_archive_db";
+$uName = "u873696219_RSHS_Archive";
+$pass = "Quasimodo@84526";
+$db_name = "u873696219_rshs_archive";
 
 try {
     $conn = new PDO("mysql:host=$sName;dbname=$db_name",

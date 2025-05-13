@@ -14,22 +14,31 @@ $reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <section class="flex">
     <?php include '_components/sidebar.php';?>
     <main class="flex-1 min-h-screen p-8 ml-[272px] max-[1023px]:ml-[0px] overflow-scroll-y">
-        <button onclick="toggleSidebar()" class="md:hidden text-primary rounded">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-menu">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M4 8l16 0" />
-                <path d="M4 16l16 0" />
-            </svg>
-        </button>
+        <div class="flex justify-between mb-5">
+            <button onclick="toggleSidebar()" class="lg:hidden text-primary rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-menu">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 8l16 0" />
+                    <path d="M4 16l16 0" />
+                </svg>
+            </button>
+            <div class="flex lg:hidden gap-4">
+                <!-- Search Box -->
+                <input type="text" id="searchBox" placeholder="Search items..." class="border px-4 py-2 rounded-lg shadow-md w-40 neural-grotesk text-[14px]">
+                
+            </div>
+        </div>
         
         <div class="flex gap-5 items-center justify-between">
             <div class="page-heading">
                 <h1>Student's Inventory</h1>
                 <p class="text-gray-600">Manage your lab inventory with ease.</p>
             </div>
-
+            <div class="flex gap-4 max-[1024px]:hidden">
+                <!-- Search Box -->
+                <input type="text" id="searchBox" placeholder="Search items..." class="border px-4 py-2 rounded-lg shadow-md w-40 neural-grotesk text-[14px]">
+            </div>
             <!-- Search Box -->
-            <input type="text" id="searchBox" placeholder="Search items..." class="border px-4 py-2 rounded-lg shadow-md w-60">
         </div>
 
         <!-- Inventory Cards -->

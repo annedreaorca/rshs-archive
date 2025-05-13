@@ -44,27 +44,15 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="bg-white shadow-md rounded-lg p-6 overview-table">
-                    <div class="flex justify-between items-center overview-table-header">
-                        <h2>Pending List</h2>
-                        <a href="students/sign-in" class="button-medium gray">Full List</a>
-                    </div>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6 overview-table">
-                    <div class="flex justify-between items-center overview-table-header">
-                        <h2>Rejected List</h2>
-                        <a href="students/sign-in" class="button-medium gray">Full List</a>
-                    </div>
-                </div>
             </div>
-            <div class="flex flex-col gap-[20px] w-6/12 max-[1320px]:w-full">
-                <div class="bg-white shadow-md rounded-lg p-6 overview-table">
-                    <div class="flex justify-between items-center overview-table-header">
-                        <h2>Approved List</h2>
-                        <a href="students/sign-in" class="button-medium gray">Full List</a>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="flex flex-col gap-[20px] w-6/12 max-[1320px]:w-full">-->
+            <!--    <div class="bg-white shadow-md rounded-lg p-6 overview-table">-->
+            <!--        <div class="flex justify-between items-center overview-table-header">-->
+            <!--            <h2>Approved List - <span class="text-gray-600">Coming Soon</span></h2>-->
+            <!--            <a href="#" class="button-medium gray">Full List</a>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
         </div>
     </main>
 </section>
